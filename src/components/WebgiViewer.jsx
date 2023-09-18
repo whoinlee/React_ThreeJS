@@ -38,11 +38,15 @@ const WebgiViewer = () => {
     const manager = await viewer.addPlugin(AssetManagerPlugin);
 
     await addBasePlugins(viewer);
+
     await viewer.addPlugin(CanvasSnipperPlugin);
+
     viewer.renderer.refreshPipeline();
 
     // Import and add a GLB file.
     await manager.addFromPath("scene-black.glb");
+
+    viewer.getPlugin(TonemapPlugin).config.clipBackground = true; //???//
   }, []);
 
   useEffect( () => {
