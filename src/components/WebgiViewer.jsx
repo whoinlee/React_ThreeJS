@@ -10,7 +10,6 @@ import {
 import {
   ViewerApp,
   AssetManagerPlugin,
-  // CanvasSnipperPlugin,
   GBufferPlugin,
   ProgressivePlugin,
   TonemapPlugin,
@@ -18,15 +17,21 @@ import {
   SSAOPlugin,
   BloomPlugin,
   GammaCorrectionPlugin,
-  // addBasePlugins,
   mobileAndTabletCheck,
 } from "webgi";
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { scrollAnimation } from '../util/scrollAnimation';
 
+
+gsap.registerPlugin(ScrollTrigger);
 
 const WebgiViewer = () => {
   const canvasRef = useRef(null);
+
+  const memoizedScrollAnimation = useCallback((position, target, onUpdate) => {
+    if (position && target && onUpdate) scrollAnimation(position, target, onUpdate);
+  }, []);
 
   const setupViewer = useCallback(async () => {
     /* 
@@ -61,13 +66,22 @@ const WebgiViewer = () => {
 
     window.scrollTo(0, 0);
 
+
+
     let needsUpdate = true;
+    const onUpdate = () => {
+      //-- camera and viewer need to be updated
+      needsUpdate = true;
+      viewer.setDirty();
+    }
     viewer.addEventListener("preFrame", () => {
       if (needsUpdate) {
         camera.positionTargetUpdated(true);
         needsUpdate = false;
       }
-    })
+    });
+
+    memoizedScrollAnimation(position, target, onUpdate);
   }, []);
 
   useEffect( () => {
