@@ -51,4 +51,29 @@ export const scrollAnimation = (position, target, onUpdate) => {
             immediateRender: false  //-- not rendering the animation until it's triggered
         }
     })
+    .to(position, {
+        x: 1.56,
+        y: 5.0,
+        z: 0.011,
+        scrollTrigger: {
+            trigger: '.display-section',
+            start: "top bottom",
+            end: "top top",
+            scrub: true, //true, or 2:delay
+            immediateRender: false  //-- not rendering the animation until it's triggered
+        },
+        onUpdate
+    })
+    .to(target, {
+        x: -0.55,
+        y: 0.32,
+        z: 0.0,
+        scrollTrigger: {
+            trigger: '.display-section',
+            start: "top bottom",
+            end: "top top",
+            scrub: true, //true, or 2:delay
+            immediateRender: false  //-- not rendering the animation until it's triggered
+        }
+    })
 }
