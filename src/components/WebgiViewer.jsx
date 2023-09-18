@@ -10,7 +10,7 @@ import {
 import {
   ViewerApp,
   AssetManagerPlugin,
-  CanvasSnipperPlugin,
+  // CanvasSnipperPlugin,
   GBufferPlugin,
   ProgressivePlugin,
   TonemapPlugin,
@@ -18,7 +18,7 @@ import {
   SSAOPlugin,
   BloomPlugin,
   GammaCorrectionPlugin,
-  addBasePlugins,
+  // addBasePlugins,
   mobileAndTabletCheck,
 } from "webgi";
 import gsap from 'gsap';
@@ -36,10 +36,18 @@ const WebgiViewer = () => {
       canvas: canvasRef.current,
     });
     const manager = await viewer.addPlugin(AssetManagerPlugin);
+    const camera = await viewer.scene.activeCamera;
+    const position = camera.position;
+    const target = camera.target;
 
-    await addBasePlugins(viewer);
-
-    await viewer.addPlugin(CanvasSnipperPlugin);
+    await viewer.addPlugin(GBufferPlugin);
+    await viewer.addPlugin(new ProgressivePlugin(32))
+    // await viewer.addPlugin(new TonemapPlugin(!viewer.useRgbm));  //-- hide topNav
+    await viewer.addPlugin(new TonemapPlugin(true));
+    await viewer.addPlugin(GammaCorrectionPlugin)
+    await viewer.addPlugin(SSRPlugin)
+    await viewer.addPlugin(SSAOPlugin)
+    await viewer.addPlugin(BloomPlugin)
 
     viewer.renderer.refreshPipeline();
 
@@ -47,6 +55,19 @@ const WebgiViewer = () => {
     await manager.addFromPath("scene-black.glb");
 
     viewer.getPlugin(TonemapPlugin).config.clipBackground = true; //???//
+    viewer.scene.activeCamera.setCameraOptions({
+      controlsEnabled: false
+    });
+
+    window.scrollTo(0, 0);
+
+    let needsUpdate = true;
+    viewer.addEventListener("preFrame", () => {
+      if (needsUpdate) {
+        camera.positionTargetUpdated(true);
+        needsUpdate = false;
+      }
+    })
   }, []);
 
   useEffect( () => {
