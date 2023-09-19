@@ -9,7 +9,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
         z: -5.93,
         scrollTrigger: {
             trigger: '.sound-section',
-            start: "top bottom",
+            start: "top bottom",    //-- when top of the .sound-section hits the bottom of the viewport
             end: "top top",
             scrub: 2, //true, or 2:delay
             immediateRender: false  //-- not rendering the animation until it's triggered
@@ -23,8 +23,8 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.sound-section',
             start: "top bottom",
             end: "top top",
-            scrub: 2, //true, or 2:delay
-            immediateRender: false  //-- not rendering the animation until it's triggered
+            scrub: 2, 
+            immediateRender: false  
         }
     }).to('.jumbotron-section', {
         opacity: 0,
@@ -32,8 +32,8 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.sound-section',
             start: "top bottom",
             end: "top top",
-            scrub: 2, //true, or 2:delay
-            immediateRender: false  //-- not rendering the animation until it's triggered
+            scrub: 2, 
+            immediateRender: false  
         }
     }).to('.sound-section-content', {
         opacity: 1,
@@ -41,8 +41,8 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.sound-section',
             start: "top bottom",
             end: "top top",
-            scrub: 2, //true, or 2:delay
-            immediateRender: false  //-- not rendering the animation until it's triggered
+            scrub: 2, 
+            immediateRender: false  
         }
     }).to(position, {
         x: 1.56,
@@ -52,8 +52,8 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.display-section',
             start: "top bottom",
             end: "top top",
-            scrub: 2, //true, or 2:delay
-            immediateRender: false  //-- not rendering the animation until it's triggered
+            scrub: 2, 
+            immediateRender: false  
         },
         onUpdate
     }).to(target, {
@@ -64,8 +64,8 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.display-section',
             start: "top bottom",
             end: "top top",
-            scrub: 2, //true, or 2:delay
-            immediateRender: false  //-- not rendering the animation until it's triggered
+            scrub: 2, 
+            immediateRender: false 
         }
     }).to('.display-section', {
         opacity: 1,
@@ -73,8 +73,8 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.display-section',
             start: "top bottom",
             end: "top top",
-            scrub: 2, //true, or 2:delay
-            immediateRender: false  //-- not rendering the animation until it's triggered
+            scrub: 2,
+            immediateRender: false  
         }
     })
 }
