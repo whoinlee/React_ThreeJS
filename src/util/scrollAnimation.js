@@ -14,7 +14,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.sound-section',
             start: "top bottom",
             end: "top top",
-            scrub: true, //true, or 2:delay
+            scrub: 2, //true, or 2:delay
             immediateRender: false  //-- not rendering the animation until it's triggered
         },
         onUpdate
@@ -27,7 +27,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.sound-section',
             start: "top bottom",
             end: "top top",
-            scrub: true, //true, or 2:delay
+            scrub: 2, //true, or 2:delay
             immediateRender: false  //-- not rendering the animation until it's triggered
         }
     })
@@ -37,7 +37,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.sound-section',
             start: "top bottom",
             end: "top top",
-            scrub: true, //true, or 2:delay
+            scrub: 2, //true, or 2:delay
             immediateRender: false  //-- not rendering the animation until it's triggered
         }
     })
@@ -47,7 +47,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.sound-section',
             start: "top bottom",
             end: "top top",
-            scrub: true, //true, or 2:delay
+            scrub: 2, //true, or 2:delay
             immediateRender: false  //-- not rendering the animation until it's triggered
         }
     })
@@ -59,7 +59,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.display-section',
             start: "top bottom",
             end: "top top",
-            scrub: true, //true, or 2:delay
+            scrub: 2, //true, or 2:delay
             immediateRender: false  //-- not rendering the animation until it's triggered
         },
         onUpdate
@@ -72,7 +72,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.display-section',
             start: "top bottom",
             end: "top top",
-            scrub: true, //true, or 2:delay
+            scrub: 2, //true, or 2:delay
             immediateRender: false  //-- not rendering the animation until it's triggered
         }
     })
@@ -82,7 +82,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             trigger: '.display-section',
             start: "top bottom",
             end: "top top",
-            scrub: true, //true, or 2:delay
+            scrub: 2, //true, or 2:delay
             immediateRender: false  //-- not rendering the animation until it's triggered
         }
     })

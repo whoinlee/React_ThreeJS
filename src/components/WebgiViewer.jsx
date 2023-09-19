@@ -51,7 +51,7 @@ const WebgiViewer = forwardRef((props, ref) => {
         }
       });
 
-      gsap.to(targetnRef, {
+      gsap.to(targetRef, {
         x: 0.11,
         y: 0.0,
         z: 0.0,
@@ -102,6 +102,7 @@ const WebgiViewer = forwardRef((props, ref) => {
     await manager.addFromPath("scene-black.glb");
 
     viewer.getPlugin(TonemapPlugin).config.clipBackground = true; //???//
+
     viewer.scene.activeCamera.setCameraOptions({
       controlsEnabled: false
     });
@@ -128,11 +129,49 @@ const WebgiViewer = forwardRef((props, ref) => {
     setupViewer();
   }, []);
 
+  const handleExit = useCallback(() => {
+    canvasContainerRef.current.style.pointerEvents = "none";
+    props.contentRef.current.style.opacity = "1";
+    viewerRef.scene.activeCamera.setCameraOptions({
+      controlsEnabled: false
+    });
+    setPreviewMode(false);
+
+    gsap.to(positionRef, {
+      x: 1.56,
+      y: 5.0,
+      z: 0.011,
+      scrollTrigger: {
+          trigger: '.display-section',
+          start: "top bottom",
+          end: "top top",
+          scrub: true, //true, or 2:delay
+          immediateRender: false  //-- not rendering the animation until it's triggered
+      },
+      onUpdate: () => {
+        viewerRef.setDirty();
+        cameraRef.positionTargetUpdated(true);
+      }
+    });
+    gsap.to(targetRef, {
+      x: -0.55,
+      y: 0.32,
+      z: 0.0,
+      scrollTrigger: {
+          trigger: '.display-section',
+          start: "top bottom",
+          end: "top top",
+          scrub: 2,
+          immediateRender: false  //-- not rendering the animation until it's triggered
+      }
+    });
+  }, [canvasContainerRef, viewerRef, positionRef, cameraRef, targetRef]);
+
   return (
     <div ref={canvasContainerRef} id="webgi-canvas-container">
       <canvas id="webgi-canvas" ref={canvasRef} />
       { previewMode && 
-        <button className="button">Exit</button>
+        <button className="button" onClick={handleExit}>Exit</button>
       }
     </div>
   );
