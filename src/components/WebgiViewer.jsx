@@ -153,6 +153,7 @@ const WebgiViewer = forwardRef((props, ref) => {
         cameraRef.positionTargetUpdated(true);
       }
     });
+    
     gsap.to(targetRef, {
       x: -0.55,
       y: 0.32,

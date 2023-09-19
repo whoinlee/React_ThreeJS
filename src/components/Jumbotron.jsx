@@ -15,7 +15,7 @@ const Jumbotron = () => {
   return (
     <div className="jumbotron-section wrapper">
       <h2 className='title'>New </h2>
-      <img className='logo' src={Iphone} alt="iPhone 14 pro"></img>
+      <img className='logo' src={Iphone} alt="iPhone 14 pro" />
       <p className='text'>Big and bigger.</p>
       <span className='description'>From $41.62/mo. for 24 mo. or $999 before trade-in</span>
       <ul className="links">
