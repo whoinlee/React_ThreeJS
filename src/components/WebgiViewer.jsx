@@ -1,8 +1,8 @@
 import React from "react";
 import {
   useRef,
-  useEffect,
   useState,
+  useEffect,
   useCallback,
   useImperativeHandle,
   forwardRef
@@ -22,7 +22,6 @@ import {
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { scrollAnimation } from '../util/scrollAnimation';
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,9 +73,7 @@ const WebgiViewer = forwardRef((props, ref) => {
     /* 
     REF:: https://github.com/pixotronics/webgi-vanilla-starter/blob/master/src/index.ts 
     */
-    const viewer = new ViewerApp({
-      canvas: canvasRef.current,
-    });
+    const viewer = new ViewerApp({canvas: canvasRef.current});
     const manager = await viewer.addPlugin(AssetManagerPlugin);
     const camera = await viewer.scene.activeCamera;
     const position = camera.position;
@@ -101,11 +98,8 @@ const WebgiViewer = forwardRef((props, ref) => {
     // Import and add a GLB file.
     await manager.addFromPath("scene-black.glb");
 
-    viewer.getPlugin(TonemapPlugin).config.clipBackground = true; //???//
-
-    viewer.scene.activeCamera.setCameraOptions({
-      controlsEnabled: false
-    });
+    viewer.getPlugin(TonemapPlugin).config.clipBackground = true; //-- for not hiding topNav
+    viewer.scene.activeCamera.setCameraOptions({controlsEnabled: false});
 
     window.scrollTo(0, 0);
 
@@ -169,10 +163,10 @@ const WebgiViewer = forwardRef((props, ref) => {
   }, [canvasContainerRef, viewerRef, positionRef, cameraRef, targetRef]);
 
   return (
-    <div ref={canvasContainerRef} id="webgi-canvas-container">
+    <div id="webgi-canvas-container" ref={canvasContainerRef}>
       <canvas id="webgi-canvas" ref={canvasRef} />
-      { previewMode && 
-        <button className="button" onClick={handleExit}>Exit</button>
+      { 
+        previewMode && <button className="button" onClick={handleExit}>Exit</button>
       }
     </div>
   );

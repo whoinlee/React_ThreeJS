@@ -1,12 +1,9 @@
 import gsap from 'gsap';
 
-//-- props: camera position, target, and onUpdate
 export const scrollAnimation = (position, target, onUpdate) => {
     const timeline = gsap.timeline();
 
-    //-- change positions
-    timeline
-    .to(position, {
+    timeline.to(position, {
         x: -3.38,
         y: -10.74,
         z: -5.93,
@@ -18,8 +15,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             immediateRender: false  //-- not rendering the animation until it's triggered
         },
         onUpdate
-    })
-    .to(target, {
+    }).to(target, {
         x: 1.52,
         y: 0.77,
         z: -1.08,
@@ -30,8 +26,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             scrub: 2, //true, or 2:delay
             immediateRender: false  //-- not rendering the animation until it's triggered
         }
-    })
-    .to('.jumbotron-section', {
+    }).to('.jumbotron-section', {
         opacity: 0,
         scrollTrigger: {
             trigger: '.sound-section',
@@ -40,8 +35,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             scrub: 2, //true, or 2:delay
             immediateRender: false  //-- not rendering the animation until it's triggered
         }
-    })
-    .to('.sound-section-content', {
+    }).to('.sound-section-content', {
         opacity: 1,
         scrollTrigger: {
             trigger: '.sound-section',
@@ -50,8 +44,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             scrub: 2, //true, or 2:delay
             immediateRender: false  //-- not rendering the animation until it's triggered
         }
-    })
-    .to(position, {
+    }).to(position, {
         x: 1.56,
         y: 5.0,
         z: 0.011,
@@ -63,8 +56,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             immediateRender: false  //-- not rendering the animation until it's triggered
         },
         onUpdate
-    })
-    .to(target, {
+    }).to(target, {
         x: -0.55,
         y: 0.32,
         z: 0.0,
@@ -75,8 +67,7 @@ export const scrollAnimation = (position, target, onUpdate) => {
             scrub: 2, //true, or 2:delay
             immediateRender: false  //-- not rendering the animation until it's triggered
         }
-    })
-    .to('.display-section', {
+    }).to('.display-section', {
         opacity: 1,
         scrollTrigger: {
             trigger: '.display-section',
